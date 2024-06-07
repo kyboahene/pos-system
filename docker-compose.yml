@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    environment:
+      - API_URL=${API_URL}
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: pos-system
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
