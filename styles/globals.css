@@ -6,3 +6,8 @@
   font-family: "Uncut-Sans-Regular";
   src: url("../fonts/Uncut-Sans-Regular.otf");
 }
+
+@font-face {
+  font-family: "Carena-Regular";
+  src: url("../fonts/Carena-Regular.otf");
+}
