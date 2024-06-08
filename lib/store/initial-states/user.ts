@@ -1,6 +1,6 @@
-import { User } from "@/types";
+import { AuthState } from "@/types";
 
-export const USER: User = {
-    name: '',
+export const USER: AuthState = {
+    user: null,
     isAuthenticated: false
 }
