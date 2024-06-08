@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import "./styles/globals.css";
+import "../styles/globals.css";
+import Providers from "@/modules/providers";
 
 export const metadata: Metadata = {
   title: "POS System",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-[#f0f5f3]">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
