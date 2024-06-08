@@ -1,5 +1,15 @@
 export type User = {
-    name: string
+    id: string
+    username: string
+}
+
+export type LoginCredentials = {
+    username: string
+    password: string
+}
+
+export type AuthState = {
+    user: User | null
     isAuthenticated: boolean
 }
 
