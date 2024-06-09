@@ -14,8 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#f0f5f3] font-uncut">
-        <Providers>{children}</Providers>
+      <body className="bg-[#f5f5f5] font-uncut">
+        <Providers>
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );

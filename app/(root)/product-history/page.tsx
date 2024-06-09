@@ -1,7 +1,8 @@
 import React from "react";
+import ProductHistoryTemplate from "@/modules/product-history/templates/product-history-template";
 
 const ProductHistory = () => {
-  return <div></div>;
+  return <ProductHistoryTemplate />;
 };
 
 export default ProductHistory;
