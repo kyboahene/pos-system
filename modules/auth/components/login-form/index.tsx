@@ -39,7 +39,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="flex flex-col gap-12 w-4/6">
+    <div className="flex flex-col gap-12 w-5/6 md:w-4/6">
       <h1 className="font-semibold text-4xl">Log in to Syst</h1>
       <form className="flex flex-col gap-8" onSubmit={handleSubmit(login)}>
         <div className="flex flex-col gap-3">
@@ -53,7 +53,7 @@ const LoginForm = () => {
           <Input
             type="text"
             {...register("username")}
-            className="border-b border-t-0 text-2xl bg-inherit focus-visible:outline-none focus-visible:border-black"
+            className="border-b border-t-0 px-3 py-2 text-2xl bg-inherit focus-visible:outline-none focus-visible:border-black"
           />
         </div>
         <div className="flex flex-col gap-3">
@@ -68,7 +68,7 @@ const LoginForm = () => {
           <Input
             type="password"
             {...register("password")}
-            className="border-b border-t-0 text-2xl bg-inherit focus-visible:outline-none focus-visible:border-black"
+            className="border-b border-t-0 px-3 py-2 text-2xl bg-inherit focus-visible:outline-none focus-visible:border-black"
           />
         </div>
         <div>
