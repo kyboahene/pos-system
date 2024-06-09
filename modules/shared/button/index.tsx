@@ -11,6 +11,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-green text-white hover:bg-green/90",
         outline: "border border-green bg-inherit text-green",
+        ghost: ""
              },
       size: {
         default: "py-4 px-6",
