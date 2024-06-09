@@ -13,7 +13,7 @@ export const sidebarLinks = [
     },
     {
         label: "Order",
-        route: "/order",
+        route: "/orders",
         icon: ShoppingCart
     },
     {
