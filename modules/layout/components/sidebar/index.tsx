@@ -23,9 +23,12 @@ const Sidebar = () => {
             <Link
               href={link.route}
               key={index}
-              className={cn("p-4 rounded-lg justify-start", {
-                "bg-blue-1": isActive,
-              })}
+              className={cn(
+                "p-4 rounded-lg justify-start hover:bg-green hover:text-white",
+                {
+                  "bg-green text-white": isActive,
+                }
+              )}
             >
               <div className="flex gap-4 items-center">
                 {<link.icon />}
