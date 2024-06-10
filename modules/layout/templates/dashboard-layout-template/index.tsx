@@ -1,12 +1,18 @@
+"use client";
+
 import React from "react";
 import Navbar from "../../components/navbar";
 import Sidebar from "../../components/sidebar";
+import { useSelector } from "react-redux";
+import { getUser } from "@/lib/store/selectors/user";
 
 type Props = {
   children: React.ReactNode;
 };
 
 const DashboardLayoutTemplate = ({ children }: Props) => {
+  const user = useSelector(getUser);
+
   return (
     <main className="relative">
       <Navbar />
