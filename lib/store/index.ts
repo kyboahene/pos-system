@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cartProducer from "./slices/cart"
+import cartReducer from "./slices/cart"
 import userReducer from "./slices/user";
 import orderReducer from "./slices/order";
 import productReducer from "./slices/product";
@@ -9,7 +9,7 @@ export const store = configureStore({
         user: userReducer,
         order: orderReducer,
         product: productReducer,
-        cart: cartProducer
+        cart: cartReducer
     },
 });
 
