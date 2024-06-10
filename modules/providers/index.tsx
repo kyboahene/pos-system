@@ -6,8 +6,8 @@ import TanstackProviders from "./react-query-provider";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <TanstackProviders>
-      <Provider store={store}>{children}</Provider>
-    </TanstackProviders>
+    <Provider store={store}>
+      <TanstackProviders>{children}</TanstackProviders>
+    </Provider>
   );
 }
