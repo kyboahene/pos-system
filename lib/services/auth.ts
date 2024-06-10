@@ -7,10 +7,10 @@ export const loginUser = async (username: string, password: string) => {
     try {
         await mockAPICall()
         if (username !== "kyboahene")
-            throw new Error("Username does not exist")
+            throw ("Username does not exist")
 
         if (password !== "password")
-            throw new Error("Incorrect password")
+            throw ("Incorrect password")
 
         const user: User = {
             id: uuidv4(),
