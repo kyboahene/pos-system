@@ -1,12 +1,60 @@
 import React from "react";
+import { utils, writeFile } from "xlsx";
+import { Download } from "lucide-react";
+import { useSelector } from "react-redux";
+
+import { Order } from "@/types";
+import { Button } from "@/modules/shared/button";
 import OrdersTable from "../../components/orders-table";
+import { getOrders } from "@/lib/store/selectors/order";
+import { getNameOfProductsOrdered, getTotalPricePaid } from "@/lib/utils";
 
 const OrdersPageTemplate = () => {
+  const orders = useSelector(getOrders);
+
+  function modifiedForExcelExport(orders: Order[]) {
+    return (
+      orders &&
+      orders.map((order, idx) => ({
+        NO: idx + 1,
+        CUSTOMER: order.customerName,
+        PRODUCTS: getNameOfProductsOrdered(order.productDetails),
+        PRICE: getTotalPricePaid(order.productDetails),
+        DELIVERY: order.deliveryOption,
+        DATE: new Date(order.createdAt).toLocaleDateString(),
+        STATUS: order.status,
+      }))
+    );
+  }
+
+  function exportToExcel(sheet: any[]) {
+    let firstSheet = utils.json_to_sheet(sheet, {
+      dateNF: "dd/mm/yy",
+    });
+
+    let leaveBook = utils.book_new();
+    utils.book_append_sheet(leaveBook, firstSheet, "Orders");
+    writeFile(leaveBook, `orders.xls`, {
+      cellDates: true,
+    });
+  }
+
+  const data = modifiedForExcelExport(orders);
+
   return (
     <section className="flex size-full flex-col gap-10">
-      <h1 className="text-[40px] font-bold">Orders</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl md:text-[40px] font-bold">Orders</h1>
 
-      <OrdersTable />
+        <div>
+          <Button className="flex gap-3" onClick={() => exportToExcel(data)}>
+            <Download className="w-4 h-4" />
+            Export
+          </Button>
+        </div>
+      </div>
+
+      <OrdersTable orders={orders} />
     </section>
   );
 };
