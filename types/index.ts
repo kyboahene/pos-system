@@ -19,7 +19,7 @@ export type Product = {
     category: string
     description: string
     image: string
-    variant: ProductVariant[]
+    variants: ProductVariant[]
 }
 
 export type Products = {
@@ -29,18 +29,34 @@ export type Products = {
 export type ProductVariant = {
     name: string
     price: string
-    size: "S" | "M" | "L"
+    size: string
+    quantity: number
+}
+
+export type Cart = {
+    product: Product | null
+    status: "Pending" | "Confirmed"
+    total?: string
+}
+
+export type AllCart = {
+    cart: Cart[] | null
+    selectedProduct: Product | null
 }
 
 export type Order = {
     id: string
     customerName: string
+    productDetails: Cart[]
     phoneNumber: string
-    PaymentMethod: "Momo" | "Card" | "Cash on delivery"
+    PaymentMethod: string
     momoNumber?: string
-    deliveryOption: "Delivery" | "Pick up"
+    deliveryOption: string
     createdAt: Date
+    status: string
 }
+
+export type OrderStatus = "Pending" | "Confirmed" | "Canceled"
 
 export type Orders = {
     orders: Order[]
