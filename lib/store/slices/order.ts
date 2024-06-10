@@ -6,7 +6,9 @@ const orderSlice = createSlice({
     name: SLICE_TYPES.USER,
     initialState: ORDER,
     reducers: {
-        addOrder: (state, action) => { },
+        addOrder: (state, action) => {
+            state.orders = action.payload
+        },
     }
 })
 
