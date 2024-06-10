@@ -6,7 +6,7 @@ import { LoginCredentials, User } from "@/types";
 import useLocalStorage from "./use-local-storage";
 import { getUserAuthenticationStatus } from "../store/selectors/user";
 
-const useLogin = () => {
+const useLogin = (onSuccessCallback: () => void) => {
   const dispatch = useDispatch();
   const { setItem } = useLocalStorage("user");
   const isUserAuthenticated = useSelector(getUserAuthenticationStatus);
@@ -23,7 +23,7 @@ const useLogin = () => {
         isUserAuthenticated,
       };
       setItem(userDataToStore);
-      // onSuccessCallback();
+      onSuccessCallback();
     },
   });
 };
