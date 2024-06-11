@@ -82,7 +82,7 @@ const ProductHistoryTable = () => {
             {isLoading ? (
               <TableRow>
                 <TableCell colSpan={7} className="h-24 text-center">
-                  Loading…
+                  <span className="spinner"></span>
                 </TableCell>
               </TableRow>
             ) : products !== undefined && products.length > 0 ? (

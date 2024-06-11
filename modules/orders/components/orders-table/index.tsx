@@ -96,7 +96,7 @@ const OrdersTable = ({ orders }: OrdersTableProps) => {
             {isLoading || updateIsLoading ? (
               <TableRow>
                 <TableCell colSpan={7} className="h-24 text-center">
-                  Loading…
+                  <span className="spinner"></span>
                 </TableCell>
               </TableRow>
             ) : orders !== undefined && orders.length > 0 ? (
@@ -140,16 +140,12 @@ const OrdersTable = ({ orders }: OrdersTableProps) => {
                       </Select>
                     </TableCell>
                     <TableCell align="center">
-                      {isLoading ? (
-                        "..."
-                      ) : (
-                        <span
-                          className="cursor-pointer"
-                          onClick={() => handleDelete(order.id)}
-                        >
-                          <Trash2 className="text-red-500" />
-                        </span>
-                      )}
+                      <span
+                        className="cursor-pointer"
+                        onClick={() => handleDelete(order.id)}
+                      >
+                        <Trash2 className="text-red-500" />
+                      </span>
                     </TableCell>
                   </TableRow>
                 );
