@@ -53,18 +53,6 @@ const ProductHistoryTable = () => {
     mutate(productId);
   }
 
-  const exportToExcel = (sheet1: unknown[], date: any) => {
-    let firstSheet = utils.json_to_sheet(sheet1, {
-      dateNF: "dd/mm/yy",
-    });
-
-    let leaveBook = utils.book_new();
-    utils.book_append_sheet(leaveBook, firstSheet, "Product History");
-    writeFile(leaveBook, `${date}.xls`, {
-      cellDates: true,
-    });
-  };
-
   return (
     <section className="bg-white">
       <div className=" max-sm:max-w-[370px] overflow-x-auto">

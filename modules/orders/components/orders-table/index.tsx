@@ -40,7 +40,6 @@ type OrdersTableProps = {
 
 const OrdersTable = ({ orders }: OrdersTableProps) => {
   const dispatch = useDispatch();
-
   const { setItem } = useLocalStorage("orders");
 
   const { mutate, isLoading } = useMutation(

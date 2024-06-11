@@ -28,13 +28,13 @@ const OrdersPageTemplate = () => {
   }
 
   function exportToExcel(sheet: any[]) {
-    let firstSheet = utils.json_to_sheet(sheet, {
+    let ordersSheet = utils.json_to_sheet(sheet, {
       dateNF: "dd/mm/yy",
     });
 
-    let leaveBook = utils.book_new();
-    utils.book_append_sheet(leaveBook, firstSheet, "Orders");
-    writeFile(leaveBook, `orders.xls`, {
+    let orderBook = utils.book_new();
+    utils.book_append_sheet(orderBook, ordersSheet, "Orders");
+    writeFile(orderBook, `orders.xls`, {
       cellDates: true,
     });
   }
