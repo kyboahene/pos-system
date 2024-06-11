@@ -2,15 +2,15 @@
 
 import { cn } from "@/lib/utils";
 import {
+  useRef,
   Dispatch,
-  SetStateAction,
-  createContext,
+  useState,
+  useEffect,
+  useContext,
   forwardRef,
   useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
+  createContext,
+  SetStateAction,
 } from "react";
 import {
   useDropzone,
@@ -20,8 +20,10 @@ import {
 } from "react-dropzone";
 import { toast } from "sonner";
 import { Trash2 as RemoveIcon } from "lucide-react";
-import { buttonVariants } from "@/modules/shared/button";
+
+// modules
 import { Input } from "@/modules/shared/input";
+import { buttonVariants } from "@/modules/shared/button";
 
 type DirectionOptions = "rtl" | "ltr" | undefined;
 

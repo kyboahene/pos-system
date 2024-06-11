@@ -15,7 +15,6 @@ import {
   SheetTitle,
   SheetHeader,
   SheetContent,
-  SheetTrigger,
 } from "@/modules/shared/sheet";
 import { Button } from "@/modules/shared/button";
 
