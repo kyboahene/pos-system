@@ -60,7 +60,7 @@ docker build -t <image-name>:<tag>
 ### Step 2: Run the Application Using Docker Compose
 
 ```bash
-docker docker-compose up
+docker compose up
 
 ```
 
@@ -75,5 +75,5 @@ Replace <port> with the port number configured in your docker-compose.yml.
 ### Step 5: Stopping the Application
 
 ```bash
-docker-compose down
+docker compose down
 ```
