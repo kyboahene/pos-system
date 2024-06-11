@@ -7,10 +7,13 @@ const useReport = () => {
   const orders = useSelector(getOrders);
 
   function getTotalSales() {
-    const products = orders.map((order) => order.productDetails);
+    const products =
+      orders && orders.length > 0
+        ? orders.map((order) => order.productDetails)
+        : [];
     const data = products.flatMap((product) => product);
 
-    const totalSales = data.reduce(
+    const totalSales = data?.reduce(
       (sum, current) => sum + parseInt(current.total ?? ""),
       0
     );
@@ -21,9 +24,11 @@ const useReport = () => {
   function findTotalCustomers() {
     const uniqueCustomers = new Set<string>();
 
-    orders.forEach((order) => {
-      uniqueCustomers.add(order.customerName);
-    });
+    if (orders && orders.length > 0) {
+      orders.forEach((order) => {
+        uniqueCustomers.add(order.customerName);
+      });
+    }
 
     return uniqueCustomers.size;
   }
@@ -32,7 +37,10 @@ const useReport = () => {
     const productSales: { name: string; sales: string }[] = [];
     const salesMap = new Map<string, number>();
 
-    const products = orders.map((order) => order.productDetails);
+    const products =
+      orders && orders.length > 0
+        ? orders.map((order) => order.productDetails)
+        : [];
     const data = products.flatMap((product) => product);
 
     data.forEach((order) => {
@@ -57,7 +65,7 @@ const useReport = () => {
 
   return {
     totalOrders: orders?.length,
-    successfulOrders: orders.filter((order) => order.status === "Confirmed")
+    successfulOrders: orders?.filter((order) => order.status === "Confirmed")
       ?.length,
     totalCustomers: findTotalCustomers(),
     sales: getTotalSales(),
