@@ -9,7 +9,13 @@ import ReportCard from "../../components/report-card";
 import ProductSalesChart from "../../components/product-sales-chart";
 
 const ReportPageTemplate = () => {
-  const { totalCustomers, totalOrders, successfulOrders, sales } = useReport();
+  const {
+    totalCustomers,
+    totalOrders,
+    successfulOrders,
+    sales,
+    salesPerProduct,
+  } = useReport();
 
   return (
     <section className="flex size-full flex-col gap-10">
@@ -38,7 +44,7 @@ const ReportPageTemplate = () => {
         </div>
 
         <div className="w-full h-[400px] bg-white md:px-4 py-6 rounded-lg">
-          <ProductSalesChart />
+          <ProductSalesChart data={salesPerProduct} />
         </div>
       </div>
     </section>

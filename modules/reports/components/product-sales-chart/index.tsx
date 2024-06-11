@@ -1,36 +1,16 @@
 "use client";
 
 import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
-const ProductSalesChart = () => {
-  const data = [
-    {
-      name: "Page A",
-      uv: 4000,
-    },
-    {
-      name: "Page B",
-      uv: 3000,
-    },
-    {
-      name: "Page C",
-      uv: 2000,
-    },
-    {
-      name: "Page D",
-      uv: 2780,
-    },
-  ];
+type ProductSalesChartProps = {
+  data: {
+    name: string;
+    sales: string;
+  }[];
+};
+
+const ProductSalesChart = ({ data }: ProductSalesChartProps) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
@@ -45,7 +25,7 @@ const ProductSalesChart = () => {
       >
         <XAxis dataKey="name" />
         <YAxis />
-        <Bar dataKey="uv" fill="#00881E" />
+        <Bar dataKey="sales" fill="#00881E" />
       </BarChart>
     </ResponsiveContainer>
   );

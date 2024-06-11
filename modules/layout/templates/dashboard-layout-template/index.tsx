@@ -1,9 +1,13 @@
 "use client";
 
 import React from "react";
+import { useSelector } from "react-redux";
+
+// component
 import Navbar from "../../components/navbar";
 import Sidebar from "../../components/sidebar";
-import { useSelector } from "react-redux";
+
+// store
 import { getUser } from "@/lib/store/selectors/user";
 
 type Props = {
