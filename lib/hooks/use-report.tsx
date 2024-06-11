@@ -6,14 +6,15 @@ import { getOrders } from "../store/selectors/order";
 const useReport = () => {
   const orders = useSelector(getOrders);
 
+  const areOrdersNotEmpty = orders && orders?.length > 0;
+
   function getTotalSales() {
-    const products =
-      orders && orders.length > 0
-        ? orders.map((order) => order.productDetails)
-        : [];
+    const products = areOrdersNotEmpty
+      ? orders.map((order) => order.productDetails)
+      : [];
     const data = products.flatMap((product) => product);
 
-    const totalSales = data?.reduce(
+    const totalSales = data.reduce(
       (sum, current) => sum + parseInt(current.total ?? ""),
       0
     );
@@ -24,7 +25,7 @@ const useReport = () => {
   function findTotalCustomers() {
     const uniqueCustomers = new Set<string>();
 
-    if (orders && orders.length > 0) {
+    if (areOrdersNotEmpty) {
       orders.forEach((order) => {
         uniqueCustomers.add(order.customerName);
       });
@@ -37,10 +38,9 @@ const useReport = () => {
     const productSales: { name: string; sales: string }[] = [];
     const salesMap = new Map<string, number>();
 
-    const products =
-      orders && orders.length > 0
-        ? orders.map((order) => order.productDetails)
-        : [];
+    const products = areOrdersNotEmpty
+      ? orders.map((order) => order.productDetails)
+      : [];
     const data = products.flatMap((product) => product);
 
     data.forEach((order) => {
@@ -64,9 +64,10 @@ const useReport = () => {
   }
 
   return {
-    totalOrders: orders?.length,
-    successfulOrders: orders?.filter((order) => order.status === "Confirmed")
-      ?.length,
+    totalOrders: areOrdersNotEmpty ? orders.length : 0,
+    successfulOrders: areOrdersNotEmpty
+      ? orders?.filter((order) => order.status === "Confirmed").length
+      : 0,
     totalCustomers: findTotalCustomers(),
     sales: getTotalSales(),
     salesPerProduct: calculateSalesPerProduct(),
