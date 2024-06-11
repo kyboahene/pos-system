@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "sonner";
 import { Trash2 } from "lucide-react";
 import { useMutation } from "react-query";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { Cart, Order, OrderStatus, Product } from "@/types";
+// types
+import { Order } from "@/types";
 
 import {
   Table,
@@ -14,24 +15,23 @@ import {
   TableHead,
   TableHeader,
 } from "@/modules/shared/table";
+import {
+  Select,
+  SelectItem,
+  SelectGroup,
+  SelectValue,
+  SelectContent,
+  SelectTrigger,
+} from "@/modules/shared/select";
 
 // services
 import { removeOrder, updateOrderStatus } from "@/lib/services/order";
 
 // store
 import { addOrder } from "@/lib/store/slices/order";
-import { getOrders } from "@/lib/store/selectors/order";
 
 // hooks
 import useLocalStorage from "@/lib/hooks/use-local-storage";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/modules/shared/select";
 import { cn, getNameOfProductsOrdered, getTotalPricePaid } from "@/lib/utils";
 
 type OrdersTableProps = {
