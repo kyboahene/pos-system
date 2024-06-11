@@ -1,15 +1,21 @@
 import { useMutation } from "react-query";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+// service
 import { loginUser } from "../services/auth";
+
+// store
 import { setUser } from "../store/slices/user";
+
+// types
 import { LoginCredentials, User } from "@/types";
+
+// hooks
 import useLocalStorage from "./use-local-storage";
-import { getUserAuthenticationStatus } from "../store/selectors/user";
 
 const useLogin = (onSuccessCallback: () => void) => {
   const dispatch = useDispatch();
   const { setItem } = useLocalStorage("user");
-  const isUserAuthenticated = useSelector(getUserAuthenticationStatus);
 
   return useMutation({
     mutationKey: "",
@@ -20,7 +26,7 @@ const useLogin = (onSuccessCallback: () => void) => {
 
       const userDataToStore = {
         user,
-        isUserAuthenticated,
+        isUserAuthenticated: true,
       };
       setItem(userDataToStore);
       onSuccessCallback();

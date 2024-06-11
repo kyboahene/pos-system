@@ -1,7 +1,13 @@
 import { useMutation } from "react-query";
-import { addProduct } from "../services/product";
-import { Product } from "@/types";
 import { useDispatch } from "react-redux";
+
+// types
+import { Product } from "@/types";
+
+// service
+import { addProduct } from "../services/product";
+
+// store
 import { createProduct } from "../store/slices/product";
 
 const useAddProduct = () => {
